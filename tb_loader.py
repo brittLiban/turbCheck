@@ -31,5 +31,24 @@ def load_images(data_dir):
                                               # each pixel is assigned a number 0 to 255/ each pixel has 3 numbers, r g b, 0 - 255
                                               # each image in the array has a corresponding label. They are in the same spot on their corresponsding data structures. So 1 image to 1 label! 
 
+x,y = load_images(DATA_DIR) #this will return the arr of img as x and the corresponding id/label as y
+
+#handling the img(arr)
+x = x / 255.0 # this is to help the CNN learn faster, 0.0 us black, 0.5 is gray and 1.0 is white
+
+x = x.reshape(-1, IMG_SIZE, IMG_SIZE, 1)
+        # -1 tells NumPy to automatically figure out the number of images (batch size)
+        # The two IMG_SIZEs represent the height and width of each image
+        # 1 is the number of channels — use 1 for grayscale, 3 for RGB (color)
+
+        # This reshaping ensures the data matches the expected input shape for CNNs:
+        # (batch_size, height, width, channels)
+
+        
+print("image shape: ", x.shape)
+print("Label Shape: ", y.shape)
+
+
+
     
 
