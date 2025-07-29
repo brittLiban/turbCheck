@@ -7,6 +7,7 @@ IMG_SIZE = 224 # Resizing each img to 224x224 pixels THE CONSTANT
 #can adjust this as needed for speed 
 #cnns need images to be the same size! 
 DATA_DIR = "data/TB_Chest_Radiography_Database"  # where the imgs are located
+BAD_DATA = "data/TB_Chest_Radiography_Database/Unreadble"
 
 
 #this is a function on literally going through each image inside of the tb folder lol! Or based on the given parameter folder we pass in! 
@@ -25,5 +26,10 @@ def load_images(data_dir):
                 labels.append(label) #adding it to the labels arr
             except Exception as e:
                 print(f"Could not read image {img_file}")
-    return np.array(images), np.array(labels)
+                os.rename(img_file, BAD_DATA)
+    return np.array(images), np.array(labels) #the images are LITERALLY converted into an array (a grid of numbers)
+                                              # each pixel is assigned a number 0 to 255/ each pixel has 3 numbers, r g b, 0 - 255
+                                              # each image in the array has a corresponding label. They are in the same spot on their corresponsding data structures. So 1 image to 1 label! 
+
+    
 
