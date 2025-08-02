@@ -44,8 +44,9 @@ x = x.reshape(-1, IMG_SIZE, IMG_SIZE, 1)
         # This reshaping ensures the data matches the expected input shape for CNNs:
         # (batch_size, height, width, channels)
 
-        
+
 print("image shape: ", x.shape)
+#x.shape will tell you the structure of the array for exmaple (2000, 224, 224, 1)
 print("Label Shape: ", y.shape)
 
 
